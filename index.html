@@ -3,273 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Relatório de Suplementação - Beatriz | MK-Cardiosport</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Prescrição Médica - Beatriz | MK-Cardiosport</title>
     <style>
-        body { 
-            font-family: 'Segoe UI', Arial, sans-serif; 
-            margin: 20px; 
-            background: #f5f9ff; 
-            color: #333;
+        body {
+            font-family: Arial, sans-serif;
             line-height: 1.6;
-        }
-        .container {
-            max-width: 1000px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 20px;
-            background: white;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-            border-radius: 10px;
+            color: #333;
         }
-        header { 
-            display: flex; 
-            align-items: center; 
+        header {
+            text-align: center;
             margin-bottom: 30px;
+            border-bottom: 2px solid #003366;
             padding-bottom: 20px;
-            border-bottom: 1px solid #e0e9f5;
         }
-        header img { 
-            height: 70px; 
-            margin-right: 20px; 
+        header img {
+            height: 80px;
         }
-        header h1 { 
-            color: #003366; 
-            font-size: 28px; 
-            margin: 0;
-            font-weight: 600;
+        h1 {
+            color: #003366;
+            margin-bottom: 5px;
         }
         .patient-info {
             background: #f0f7ff;
             padding: 15px;
             border-radius: 8px;
-            margin-bottom: 30px;
+            margin: 20px 0;
         }
-        h2 { 
-            color: #003366; 
-            margin-top: 40px; 
-            font-size: 22px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #e0e9f5;
+        .supplement {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #ccc;
         }
-        .section { 
-            margin-bottom: 40px; 
+        .supplement strong {
+            color: #003366;
         }
-        table { 
-            width: 100%; 
-            border-collapse: collapse; 
-            margin-top: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-        th, td { 
-            padding: 12px 15px; 
-            border: 1px solid #e0e9f5; 
-            text-align: left;
-        }
-        th { 
-            background-color: #003366;
-            color: white;
-            font-weight: 500;
-        }
-        tr:nth-child(even) {
-            background-color: #f9fbfe;
-        }
-        tr:hover {
-            background-color: #f0f7ff;
-        }
-        .category-maintain {
-            color: #2e7d32;
-            font-weight: 500;
-        }
-        .category-adjust {
-            color: #d84315;
-            font-weight: 500;
-        }
-        .category-suspend {
-            color: #c62828;
-            font-weight: 500;
-        }
-        .chart-container {
-            width: 80%;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-        .download-link { 
-            text-align: center; 
-            margin-top: 50px; 
-        }
-        .download-link a { 
-            background-color: #003366; 
-            color: white; 
-            padding: 14px 28px; 
-            text-decoration: none; 
-            border-radius: 8px; 
-            font-weight: bold;
-            display: inline-block;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0,51,102,0.2);
-        }
-        .download-link a:hover { 
-            background-color: #0055aa; 
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,51,102,0.3);
-        }
-        .footer {
+        .actions {
             text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #e0e9f5;
-            color: #666;
-            font-size: 14px;
+            margin: 30px 0;
         }
-        @media (max-width: 768px) {
+        .print-btn {
+            background: #003366;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+        @media print {
+            .actions {
+                display: none;
+            }
+            body {
+                font-size: 12pt;
+                padding: 0;
+            }
             header {
-                flex-direction: column;
-                text-align: center;
-            }
-            header img {
-                margin-right: 0;
                 margin-bottom: 15px;
-            }
-            .chart-container {
-                width: 100%;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <img src="logo.png" alt="Logo MK-Cardiosport">
-            <div>
-                <h1>MK-CARDIOSPORT</h1>
-                <p style="margin: 5px 0 0; color: #555; font-size: 18px;">Relatório de Suplementação Personalizado</p>
-            </div>
-        </header>
+    <header>
+        <img src="logo.png" alt="MK-Cardiosport">
+        <h1>MK-CARDIOSPORT</h1>
+        <h2>Prescrição de Suplementação</h2>
+    </header>
 
-        <div class="patient-info">
-            <h3 style="margin-top: 0; color: #003366;">Paciente: Beatriz Oliveira</h3>
-            <p><strong>Data:</strong> 28 de Junho de 2023</p>
-            <p><strong>Objetivos:</strong> Performance esportiva, recuperação muscular e saúde geral</p>
-        </div>
-
-        <div class="section">
-            <h2>Distribuição dos Suplementos</h2>
-            <div class="chart-container">
-                <canvas id="graficoPizza" width="400" height="400"></canvas>
-            </div>
-            <p style="text-align: center; margin-top: 20px; color: #555;">
-                <strong>Legenda:</strong> <span style="color: #36a2eb;">■ Essenciais (13)</span> | 
-                <span style="color: #ffce56;">■ Úteis (3)</span> | 
-                <span style="color: #ff6384;">■ Dispensáveis (5)</span>
-            </p>
-        </div>
-
-        <div class="section">
-            <h2>Plano de Ação Personalizado</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th style="width: 15%;">Categoria</th>
-                        <th style="width: 25%;">Suplemento</th>
-                        <th style="width: 60%;">Recomendação</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td class="category-maintain">Manter</td><td>Creatina</td><td>5-8g/dia - Mantém força e recuperação muscular</td></tr>
-                    <tr><td class="category-maintain">Manter</td><td>Beta-Alanina</td><td>6g/dia - Melhora resistência muscular</td></tr>
-                    <tr><td class="category-maintain">Manter</td><td>Nitrato + Citrulina</td><td>Aumentar Citrulina para 3000-6000mg - Melhora fluxo sanguíneo</td></tr>
-                    <tr><td class="category-maintain">Manter</td><td>Teacrina</td><td>Dose padrão - Energia sem nervosismo</td></tr>
-                    <tr><td class="category-maintain">Manter</td><td>NAC</td><td>600mg/dia - Antioxidante e saúde pulmonar</td></tr>
-                    <tr><td class="category-maintain">Manter</td><td>Omega 3</td><td>2g/dia - Anti-inflamatório e saúde cardiovascular</td></tr>
-                    <tr><td class="category-maintain">Manter</td><td>Whey Protein</td><td>2 scoops/dia - Atendimento proteico</td></tr>
-                    <tr><td class="category-maintain">Manter</td><td>Palatinose</td><td>15g pré-treino - Energia sustentada</td></tr>
-                    <tr><td class="category-maintain">Manter</td><td>Cafeína (treinos longos)</td><td>100-200mg/dose - Performance</td></tr>
-                    <tr><td class="category-maintain">Manter</td><td>Vitamina D</td><td>2000 UI/dia - Saúde óssea e imunidade</td></tr>
-                    <tr><td class="category-maintain">Manter</td><td>Vitamina K2</td><td>100mcg/dia - Sinergia com vitamina D</td></tr>
-                    <tr><td class="category-maintain">Manter</td><td>Probiótico</td><td>Dose padrão - Saúde intestinal</td></tr>
-                    <tr><td class="category-maintain">Manter</td><td>Vitamina C (Targifor C)</td><td>500mg/dia - Antioxidante e imunidade</td></tr>
-                    <tr><td class="category-adjust">Ajustar</td><td>Magnésio Dimalato</td><td>Reduzir para 400-600mg/dia - Evitar excesso</td></tr>
-                    <tr><td class="category-adjust">Ajustar</td><td>Citrulina</td><td>Aumentar dose para melhorar vasodilatação</td></tr>
-                    <tr><td class="category-adjust">Ajustar</td><td>Controle de cafeína</td><td>Evitar após 15h - Melhorar qualidade do sono</td></tr>
-                    <tr><td class="category-suspend">Suspender</td><td>Lisina</td><td>Suspender se sem surtos de herpes recentes</td></tr>
-                    <tr><td class="category-suspend">Suspender</td><td>AminoVital</td><td>Suspender se já usa Whey - Redundância proteica</td></tr>
-                    <tr><td class="category-suspend">Suspender</td><td>Carbonato de Cálcio</td><td>Suspender se dieta já contém fontes de cálcio</td></tr>
-                    <tr><td class="category-suspend">Suspender</td><td>Glutamina</td><td>Suspender se sem estresse extremo ou lesões</td></tr>
-                    <tr><td class="category-suspend">Suspender</td><td>Vitamina E (doses altas)</td><td>Cuidado: Pode ser deletéria em excesso</td></tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="section">
-            <h2>Considerações Finais</h2>
-            <p>O plano de suplementação foi ajustado para otimizar sua performance esportiva, mantendo apenas os suplementos com comprovada eficácia para seus objetivos. Recomendamos:</p>
-            <ul>
-                <li>Manter a hidratação adequada (35ml/kg de peso)</li>
-                <li>Monitorar os efeitos dos ajustes por 4 semanas</li>
-                <li>Reavaliar a necessidade da Lisina após 2 meses</li>
-                <li>Considerar ciclos de 8 semanas para os estimulantes</li>
-            </ul>
-        </div>
-
-        <div class="download-link">
-            <a href="pres.html" target="_blank">📥 Baixar Prescrição Completa em PDF</a>
-        </div>
-
-        <div class="footer">
-            <p>MK-Cardiosport • Nutrição Esportiva de Alta Performance</p>
-            <p>Contato: contato@mkcardiosport.com.br | (11) 98765-4321</p>
-        </div>
+    <div class="patient-info">
+        <p><strong>Médico:</strong> Dr. Mauricio Kraemer - CRM-SP 147044</p>
+        <p><strong>Especialidade:</strong> Medicina do Esporte e do Exercício</p>
+        <p><strong>Data:</strong> 28/04/2025</p>
+        <p><strong>Paciente:</strong> Beatriz Lazarini</p>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const ctx = document.getElementById('graficoPizza').getContext('2d');
-            const graficoPizza = new Chart(ctx, {
-                type: 'pie',
-                data: {
-                    labels: ['Essenciais', 'Úteis', 'Dispensáveis'],
-                    datasets: [{
-                        label: 'Suplementos',
-                        data: [13, 3, 5],
-                        backgroundColor: [
-                            'rgba(54, 162, 235, 0.7)',
-                            'rgba(255, 206, 86, 0.7)',
-                            'rgba(255, 99, 132, 0.7)'
-                        ],
-                        borderColor: [
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(255, 99, 132, 1)'
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: { 
-                            position: 'bottom',
-                            labels: {
-                                padding: 20,
-                                font: {
-                                    size: 14
-                                }
-                            }
-                        },
-                        tooltip: {
-                            bodyFont: {
-                                size: 14
-                            }
-                        }
-                    },
-                    cutout: '60%',
-                    animation: {
-                        animateScale: true,
-                        animateRotate: true
-                    }
-                }
-            });
-        });
-    </script>
+    <h3>Prescrição de Suplementação e Estratégia de Endurance</h3>
+    
+    <div class="supplement">
+        <p><strong>Creatina</strong> - 5g/dia (após treino ou refeição principal)</p>
+    </div>
+    
+    <div class="supplement">
+        <p><strong>Beta-Alanina</strong> - 6g/dia (divididos em 2 doses)</p>
+    </div>
+    
+    <div class="supplement">
+        <p><strong>Nitrato + Citrulina</strong> - 400-800mg nitrato + 3000-6000mg citrulina antes do treino</p>
+    </div>
+    
+    <div class="supplement">
+        <p><strong>Teacrina</strong> - 100mg pela manhã ou antes do treino</p>
+    </div>
+    
+    <div class="supplement">
+        <p><strong>Palatinose</strong> - 15g 30 a 45 minutos antes do treino</p>
+    </div>
+    
+    <div class="supplement">
+        <p><strong>N-Acetilcisteína (NAC)</strong> - 600mg/dia</p>
+    </div>
+    
+    <div class="supplement">
+        <p><strong>Ômega-3 (EPA/DHA)</strong> - 2g/dia (pela manhã)</p>
+    </div>
+    
+    <div class="supplement">
+        <p><strong>Vitamina D3</strong> - 2000 UI/dia (manhã)</p>
+    </div>
+    
+    <div class="supplement">
+        <p><strong>Vitamina K2</strong> - 100mcg/dia (manhã, junto da vitamina D)</p>
+    </div>
+    
+    <div class="supplement">
+        <p><strong>Whey Protein</strong> - 1 scoop no café da manhã + 1 scoop pós-treino</p>
+    </div>
+    
+    <div class="supplement">
+        <p><strong>Probiótico</strong> - 1 dose/dia (em jejum)</p>
+    </div>
+    
+    <div class="supplement">
+        <p><strong>Vitamina C (Targifor C)</strong> - 500mg/dia (preferência no pós-treino)</p>
+    </div>
+    
+    <div class="supplement">
+        <p><strong>Cafeína (em cápsula)</strong> - 100 a 200mg durante treinos acima de 90 minutos</p>
+    </div>
+
+    <h3>Observações Importantes</h3>
+    <ul>
+        <li>Priorizar sono de qualidade (mínimo 7h)</li>
+        <li>Monitorar café e treino para preservar recuperação</li>
+        <li>Reavaliar cortisol matinal em 8 semanas</li>
+    </ul>
+
+    <div class="actions">
+        <button onclick="window.print()" class="print-btn">🖨️ Imprimir Prescrição</button>
+    </div>
+
+    <footer>
+        <p>MK-CARDIOSPORT - Medicina Esportiva e Performance Atlética</p>
+        <p>www.mk-cardiosport.com | cliente@mk-cardiosport.com | +55 (11) 3230-8095</p>
+    </footer>
 </body>
 </html>
